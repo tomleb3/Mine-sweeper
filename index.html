@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title> Mine Sweeper </title>
+    <link rel="icon" href="res/8bitFavicon.ico">
+
+    <link rel="stylesheet" href="css/defaults.css">
+    <link rel="stylesheet" href="css/sidenav.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
+</head>
+
+<body onload="initGame()">
+    <header>
+        <h1> Minesweeper! </h1>
+        <div class="score-text">
+            <h3></h3>
+            <h4>Highest score -<br><span></span></h4>
+        </div>
+    </header>
+
+    <main>
+        <div class="sidenav">
+            <span class="gen closebtn" onclick="closeNav()"">&times;</span>
+            <div class=" modes-div">
+                <span style="cursor:none;">Mode:</span>
+                <span class="easy-btn" onclick="boardSize(4)">Easy<br>(4x4)</span>
+                <span class="medium-btn" onclick="boardSize(8)">Medium<br>(8x8)</span>
+                <span class="hard-btn" onclick="boardSize(12)">Hard<br>(12x12)</span>
+                <span class="sicko-btn" onclick="boardSize(20)">Sicko!</span>
+        </div>
+        <div class="scores-div">
+            <span style="display:block">Highscores: <br></span>
+            <span>Easy - <span class="the-score"></span> </span>
+            <span>Medium - <span class="the-score"></span></span>
+            <span>Hard - <span class="the-score"></span></span>
+            <span>Sicko - <span class="the-score"></span></span>
+        </div>
+        <span class="gen clear-highscores-btn" style="margin-left: 25px;"
+            onclick="clearHighscores()">Clear<br>Highscores</span>
+        </div>
+        <span class="sidenav-open" onclick="openNav()">&#9776;</span>
+
+
+        <table>
+            <tbody>
+
+            </tbody>
+        </table>
+    </main>
+
+    <footer>
+
+    </footer>
+
+    <script src="js/utils.js"></script>
+    <script src="js/sidenav.js"></script>
+    <script src="js/endgame.js"></script>
+    <script src="js/highscores.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
