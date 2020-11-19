@@ -5,21 +5,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
     <title> Mine Sweeper </title>
     <link rel="icon" href="res/8bitFavicon.ico">
-
     <link rel="stylesheet" href="css/defaults.css">
     <link rel="stylesheet" href="css/sidenav.css">
+    <link rel="stylesheet" href="css/table.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
 </head>
 
-<body onload="initGame()">
+<body onload="initGame()" oncontextmenu="return false">
     <header>
-        <h1> Minesweeper! </h1>
-        <div class="score-text">
+        <div>
+            <h1> Minesweeper! </h1>
+            <h2> Mines - <span></span> </h2>
+            <p>❤️</p>
             <h3></h3>
-            <h4>Highest score -<br><span></span></h4>
         </div>
     </header>
 
@@ -28,25 +30,26 @@
             <span class="gen closebtn" onclick="closeNav()"">&times;</span>
             <div class=" modes-div">
                 <span style="cursor:none;">Mode:</span>
-                <span class="easy-btn" onclick="boardSize(4)">Easy<br>(4x4)</span>
-                <span class="medium-btn" onclick="boardSize(8)">Medium<br>(8x8)</span>
-                <span class="hard-btn" onclick="boardSize(12)">Hard<br>(12x12)</span>
-                <span class="sicko-btn" onclick="boardSize(20)">Sicko!</span>
+                <span class="easy-btn" onclick="boardSize(0,4,2)">Easy<br>(4x4)</span>
+                <span class="medium-btn" onclick="boardSize(1,8,12)">Medium<br>(8x8)</span>
+                <span class="hard-btn" onclick="boardSize(2,12,30)">Hard<br>(12x12)</span>
         </div>
         <div class="scores-div">
-            <span style="display:block">Highscores: <br></span>
-            <span>Easy - <span class="the-score"></span> </span>
-            <span>Medium - <span class="the-score"></span></span>
-            <span>Hard - <span class="the-score"></span></span>
-            <span>Sicko - <span class="the-score"></span></span>
+            <div>Highscores: <br><br></div>
+            <div>Easy - <span class="the-score"></span></div>
+            <div>Medium - <span class="the-score"></span></div>
+            <div>Hard - <span class="the-score"></span></div>
         </div>
-        <span class="gen clear-highscores-btn" style="margin-left: 25px;"
-            onclick="clearHighscores()">Clear<br>Highscores</span>
+        <span class="gen clear-highscores-btn" onclick="clearHighscores()">Clear<br>Highscores</span>
         </div>
         <span class="sidenav-open" onclick="openNav()">&#9776;</span>
 
 
         <table>
+            <thead>
+                <tr onclick="initGame()"> </tr>
+            </thead>
+
             <tbody>
 
             </tbody>
@@ -54,8 +57,9 @@
     </main>
 
     <footer>
-
+        <h4>Highest score -<br><span></span></h4>
     </footer>
+
 
     <script src="js/utils.js"></script>
     <script src="js/sidenav.js"></script>

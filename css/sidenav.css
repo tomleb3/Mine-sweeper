@@ -6,17 +6,17 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #111;
+    background-color: #C0C0C0;
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
 }
 
-.sidenav span {
+.sidenav span, .sidenav div {
     padding: 8px 8px 8px 8px;
     text-decoration: none;
     font-size: 25px;
-    color: #818181;
+    color: black;
     display: block;
     transition: 0.3s;
     cursor: pointer;
@@ -27,7 +27,7 @@
 }
 
 .easy-btn:hover {
-    color: green;
+    color: lightgreen;
 }
 
 .medium-btn:hover {
@@ -46,12 +46,9 @@
     position: absolute;
     top: 500px;
     left: 40px;
-    cursor: none;
-    margin-left: -25px;
 }
 
 .scores-div span {
-    cursor: none;
     display: inline-table;
     padding: 0px;
 }
@@ -60,6 +57,7 @@
     position: absolute;
     top: 850px;
     left: 40px;
+    margin-left: 25px;
 }
 
 .sidenav .closebtn {
