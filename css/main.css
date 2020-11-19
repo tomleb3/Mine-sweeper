@@ -7,7 +7,7 @@
 
 body {
     /* background-color: lightslategray; */
-    background-image: url('/res/back.jpg');
+    background-image: url(/res/back.jpg);
     background-size: cover;
     font-size: 30px;
 }
