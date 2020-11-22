@@ -4,8 +4,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
     <title> Mine Sweeper </title>
     <link rel="icon" href="res/8bitFavicon.ico">
     <link rel="stylesheet" href="css/defaults.css">
@@ -15,7 +13,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lobster">
 </head>
 
-<body onload="initGame()" oncontextmenu="return false">
+<body onload="initGame()" >
     <header>
         <div>
             <h1> Minesweeper! </h1>
@@ -45,19 +43,17 @@
         <span class="sidenav-open" onclick="openNav()">&#9776;</span>
 
 
-        <table>
+        <table oncontextmenu="return false">
             <thead>
                 <tr onclick="initGame()"> </tr>
             </thead>
 
-            <tbody>
-
-            </tbody>
+            <tbody></tbody>
         </table>
     </main>
 
     <footer>
-        <h4>Highest score -<br><span></span></h4>
+        <h4>Highest score - <br /> <span></span></h4>
     </footer>
 
 

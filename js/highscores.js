@@ -2,9 +2,8 @@
 
 function initHighScores() {
     var scoreLabels = document.querySelectorAll('.the-score');
-    for (var i = 0; i < 3; i++) {
-        if (isNaN(localStorage[i + 'sec']))
-            localStorage[i + 'sec'] = 0;
+    for (var i = 0; i < scoreLabels.length; i++) {
+        if (isNaN(localStorage[i + 'sec'])) localStorage[i + 'sec'] = 0;
         scoreLabels[i].innerText = localStorage[i + 'sec'] + 's';
     }
     document.querySelector('footer span').innerText = localStorage[gGame.difficulty + 'sec'] + 's';
@@ -20,6 +19,6 @@ function checkHighScores() {
 function clearHighscores() {
     localStorage.clear();
     initHighScores();
-    playSound('/res/click.mp3');
+    playSound('res/click.mp3');
     initGame();
 }

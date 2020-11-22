@@ -1,11 +1,8 @@
-////// get random number -
 
 function getRandomInteger(min, max) {
     return (Math.floor(Math.random() * (max - min)) + min);
 }
 
-
-////// get random color -
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -17,17 +14,16 @@ function getRandomColor() {
 }
 
 
-////// get empty mat -
-
-function getMat(rows, cols) {
-    var matName = [];
-    for (var i = 0; i < rows; i++) {
-        matName[i] = [];
-        for (var j = 0; j < cols; j++) {
-            matName[i][j] = null;
+// This function returns a mat with nulls at specified dimensions
+function getMat(rowsCount, colsCount) {
+    var mat = [];
+    for (var i = 0; i < rowsCount; i++) {
+        mat[i] = [];
+        for (var j = 0; j < colsCount; j++) {
+            mat[i][j] = null;
         }
     }
-    return matName;
+    return mat;
 }
 
 

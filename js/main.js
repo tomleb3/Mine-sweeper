@@ -31,24 +31,22 @@ var gLevel = {
 console.table(gBoard);
 
 function initGame() {
-    // console.clear();
 
-    ///// reset vars -
     document.querySelector('h2 span').innerText = gLevel.MINES;
     document.querySelector('h3').innerText = '';
     var elHeart = document.querySelector('header p');
-    gGame.difficulty ? elHeart.innerText = '❤️❤️❤️' : elHeart.innerText = '❤️';
+    elHeart.innerText = (gGame.difficulty) ? '❤️'.repeat(3) : '❤️';
 
     gGame.livesLeft = 3;
     gGame.shownCount = 0;
     gGame.isOver = false;
     gGame.firstTurn = true;
 
-    ///// call funcs -
-    gBoard = buildBoard();
     timerStop();
     initHighScores();
     setTableHead();
+
+    gBoard = buildBoard();
     renderBoard();
 
     console.table(gBoard); //// for testing
@@ -91,15 +89,14 @@ function boardSize(difficulty, size, mines) {
 }
 
 
-function placeMines(mines) {
-    for (var i = 0; i < mines; i++) {
-        var rand_i = getRandomInteger(0, gLevel.SIZE);
-        var rand_j = getRandomInteger(0, gLevel.SIZE);
-        if (!gBoard[rand_i][rand_j].isMine && !gBoard[rand_i][rand_j].isShown)
-            gBoard[rand_i][rand_j].isMine = true;
+function placeMines(minesCount) {
+    for (var i = 0; i < minesCount; i++) {
+        var randI = getRandomInteger(0, gLevel.SIZE);
+        var randJ = getRandomInteger(0, gLevel.SIZE);
+        if (!gBoard[randI][randJ].isMine && !gBoard[randI][randJ].isShown)
+            gBoard[randI][randJ].isMine = true;
         else {
             i--;
-            continue;
         }
     }
 }
@@ -138,36 +135,37 @@ function renderBoard() {
 
 
 function cellClicked(elCell) {
-    if (!gGame.isOver) {
-        console.log(elCell); //// for testing
-        closeNav();
-        elCell.style = 'background-color: #C0C0C0; box-shadow: inset 4px 4px 3px black';
-        for (var i = 0; i < gBoard.length; i++) {
-            for (var j = 0; j < gBoard[i].length; j++) {
-                if (elCell.className === gBoard[i][j].pos) {
-                    if (gBoard[i][j].isMine) clickedMine(elCell, i, j);        //// event lose-game / lose-life
-                    else if (gGame.shownCount++ === gLevel.SIZE ** 2 - gLevel.MINES) gameWon();        //// event win
-                    else {
-                        gBoard[i][j].isShown = true;
-                        timerStart();
+    if (gGame.isOver) return;
+    console.log(elCell); //// for testing
+    closeNav();
+    elCell.style = 'background-color: #C0C0C0; box-shadow: inset 4px 4px 3px black';
+    for (var i = 0; i < gBoard.length; i++) {
+        for (var j = 0; j < gBoard[i].length; j++) {
+            if (elCell.className === gBoard[i][j].pos) {
+                if (gBoard[i][j].isMine) clickedMine(elCell, i, j);        //// event lose-game / lose-life
+                else if (gGame.shownCount++ === gLevel.SIZE ** 2 - gLevel.MINES) gameWon();        //// event win
+                else {
+                    gBoard[i][j].isShown = true;
+                    timerStart();
 
-                        if (countNeighbors(i, j))
-                            elCell.innerText = countNeighbors(i, j);
-                        else {
-                            // TODO: recursive cellClicked call for auto-open (expandShown ?)
-                            expandShown(elCell, i, j);
-                        }
+                    var minesCount = countNeighbors(i, j);
+                    if (minesCount > 0)
+                        elCell.innerText = countNeighbors(i, j);
+                    else {
+                        // TODO: recursive cellClicked call for auto-open (expandShown ?)
+                        expandShown(elCell, i, j);
                     }
                 }
             }
         }
-        // make sure first turn isn't a bomb -
-        if (gGame.firstTurn) {
-            placeMines(gLevel.MINES);
-            gGame.firstTurn = false;
-            cellClicked(elCell);
-        }
     }
+    // make sure first turn isn't a bomb -
+    if (gGame.firstTurn) {
+        placeMines(gLevel.MINES);
+        gGame.firstTurn = false;
+        cellClicked(elCell);
+    }
+
 }
 
 
