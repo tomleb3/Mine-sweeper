@@ -1,7 +1,7 @@
 'use strict';
 
 function openNav() {
-    document.querySelector('.sidenav').style.width = 250;
+    document.querySelector('.sidenav').style.width = '250px';
     // document.querySelector('.sidenav').classList.add('open');
 }
 
